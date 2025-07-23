@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     try {
       const res = await axios.post('http://localhost:5000/api/login', {
         email,
         password,
       });
 
-      // Store token in localStorage
+      // Save token in localStorage
       localStorage.setItem('token', res.data.token);
+      alert('Login successful ✅');
 
-      alert('Login successful');
-      console.log('Logged in user:', res.data.user);
-
-      // Redirect or further logic here
+      // Redirect to dashboard or home page
+      navigate('/dashboard');
     } catch (err) {
       console.error(err);
-      alert('Login failed');
+      alert('Login failed ❌');
     }
   };
 
