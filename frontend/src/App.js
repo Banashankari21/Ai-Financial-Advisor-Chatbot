@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import PrivateRoute from './components/PrivateRoute'; // ✅ Import PrivateRoute
+import PrivateRoute from './components/PrivateRoute'; // ✅ Ensure this exists
 
 function App() {
   return (

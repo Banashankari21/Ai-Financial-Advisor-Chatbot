@@ -5,7 +5,10 @@ import { AuthContext } from '../contexts/AuthContext';
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useContext(AuthContext);
 
-  if (!isAuthenticated) {
+  // Fallback check for token in localStorage in case context resets
+  const token = localStorage.getItem('token');
+
+  if (!isAuthenticated && !token) {
     alert('Please login first');
     return <Navigate to="/login" />;
   }

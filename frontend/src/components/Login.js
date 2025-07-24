@@ -10,7 +10,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/login', {
+      const res = await axios.post('http://localhost:5000/api/auth/login', {
         email,
         password,
       });
@@ -20,7 +20,7 @@ function Login() {
       alert('Login successful ✅');
 
       // Redirect to dashboard or home page
-      navigate('/dashboard');
+      window.location.href='/dashboard';
     } catch (err) {
       console.error(err);
       alert('Login failed ❌');
