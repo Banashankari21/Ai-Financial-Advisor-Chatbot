@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const router = express.Router();
 const Expense = require('../models/Expense'); // or your actual model
 const { handleChatQuery } = require('../controllers/chatbotController');
@@ -46,4 +46,30 @@ router.post('/query', async (req, res) => {
   }
 });
 
+module.exports = router;*/
+
+
+
+
+/*const express = require('express');
+const router = express.Router();
+const { handleChatQuery } = require('../controllers/chatbotController');
+const authMiddleware = require('../middleware/authMiddleware');
+
+// ✅ Secure the chatbot endpoint with auth middleware
+router.post('/query', authMiddleware, handleChatQuery);
+
+module.exports = router;*/
+
+
+const express = require('express');
+const router = express.Router();
+const authMiddleware = require('../middleware/authMiddleware'); // Optional: secure chatbot by user
+const { handleChatQuery } = require('../controllers/chatbotController');
+
+// Single endpoint for all chatbot queries
+router.post('/query', authMiddleware, handleChatQuery);
+
 module.exports = router;
+
+

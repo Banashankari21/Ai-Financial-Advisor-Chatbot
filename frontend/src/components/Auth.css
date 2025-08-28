@@ -1,0 +1,126 @@
+/* Auth.css */
+/*.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  font-family: 'Inter', sans-serif;
+}
+
+.auth-card {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  width: 380px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.auth-card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #1e3c72;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  margin: 0.7rem 0;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+.auth-card input:focus {
+  border: 1px solid #2a5298;
+  outline: none;
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 0.9rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.auth-card button:hover {
+  transform: translateY(-2px);
+}
+
+.auth-toggle {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.auth-toggle span {
+  color: #2a5298;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}*/
+
+.auth-container {
+  width: 350px;
+  margin: 80px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 20px;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-container input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.auth-container button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #042140;
+  color: white;
+  cursor: pointer;
+}
+
+.auth-container span {
+  color: #03182e;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}
+

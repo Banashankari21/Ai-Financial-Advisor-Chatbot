@@ -32,7 +32,7 @@ const fetchNAVData = async (req, res) => {
 
 const suggestFundsByRisk = async (req, res) => {
   const { risk } = req.query;
-  const selectedKeywords = riskKeywords[risk?.toLowerCase()] || [];}
+  const selectedKeywords = riskKeywords[risk?.toLowerCase()] || [];
 
   try {
     const response = await axios.get('https://www.amfiindia.com/spages/NAVAll.txt');
@@ -51,11 +51,13 @@ const suggestFundsByRisk = async (req, res) => {
           nav: parseFloat(parts[4]),
         };
     }
+  
 }
  res.status(200).json(results.slice(0, 10)); // return top 10 matching risk
   } catch (error) {
     res.status(500).json({ error: 'Failed to suggest mutual funds' });
   }
+}
   
 
-module.exports = { fetchNAVData };
+module.exports = { fetchNAVData , suggestFundsByRisk};

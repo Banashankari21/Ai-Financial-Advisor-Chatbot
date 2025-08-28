@@ -1,36 +1,31 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 
-const ExpenseSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
+const expenseSchema = new mongoose.Schema(
+  {
+    userId: { type: String, required: true },
+    description: { type: String, required: true },
+    amount: { type: Number, required: true },
+    category: { type: String, required: true },
+    type: { type: String, enum: ['necessary', 'unnecessary'], required: true },
+    gptReason: { type: String }, // GPT-4 justification
   },
-  amount: {
-    type: Number,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  
-  /*category: {
-    type: String,
-    enum: ['necessary', 'unnecessary', 'uncategorized', 'food', 'rent', 'other'], // include your categories
-    default: 'uncategorized'
-  },*/
-  category: {
-    type: String,
-    required: true
-  },
+  { timestamps: true }
+);
 
-    type: {
-    type: String,
-    enum: ['necessary', 'unnecessary'],
-    required: true
-  }
+module.exports = mongoose.model('Expense', expenseSchema);*/
+
+// models/Expense.js
+import mongoose from "mongoose";
+
+const expenseSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
+  amount: { type: Number, required: true },
+  description: { type: String, required: true },
+  category: { type: String, required: true },
+  type: { type: String, enum: ["necessary", "unnecessary"], required: true },
 }, { timestamps: true });
 
+const Expense = mongoose.model("Expense", expenseSchema);
 
-module.exports = mongoose.model('Expense', ExpenseSchema);
+export default Expense;
+

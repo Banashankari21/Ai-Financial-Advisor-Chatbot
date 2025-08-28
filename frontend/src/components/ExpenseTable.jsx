@@ -1,33 +1,29 @@
-// src/components/ExpenseTable.jsx
+
+
 import React from "react";
 
-function ExpenseTable({ expenses }) {
+export default function ExpenseTable({ expenses }) {
   return (
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Amount</th>
-          <th>Description</th>
-          <th>Date</th>
-          <th>Type</th> 
-        </tr>
-      </thead>
-       <tbody>
-  {expenses.map((expense) => (
-    <tr key={expense._id}>
-      <td>{expense.category}</td>  {/* ✅ Moved to first */}
-      <td>{expense.amount}</td>
-      <td>{expense.description}</td>
-      <td>Date: {new Date(expense.createdAt).toLocaleDateString()}</td> {/* ✅ Fixes the date */}
-      <td>{expense.type}</td> 
-    </tr>
-  ))}
-</tbody>
-
-    </table>
+    <div className="expense-table">
+      <h3>Expenses</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Category (AI)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {expenses.map((exp) => (
+            <tr key={exp._id}>
+              <td>{exp.description}</td>
+              <td>₹{exp.amount}</td>
+              <td>{exp.category}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
-
-
-export default ExpenseTable;

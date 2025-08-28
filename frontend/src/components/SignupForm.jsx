@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
 
@@ -53,4 +53,112 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default SignupForm;*/
+
+
+
+
+/*import React, { useState } from "react";
+import axios from "axios";
+import "./Auth.css";
+
+const SignupForm = ({ onSwitch }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5000/api/auth/signup", {
+        email,
+        password,
+      });
+      alert("Signup successful, please login!");
+      onSwitch();
+    } catch (err) {
+      alert("Signup failed: " + err.response.data.message);
+    }
+  };
+
+  return (
+    <div className="auth-container">
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit} className="auth-form">
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>
+        Already have an account?{" "}
+        <span className="switch-link" onClick={onSwitch}>
+          Login
+        </span>
+      </p>
+    </div>
+  );
+};
+
+export default SignupForm;*/
+
+
+
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { AuthContext } from "../contexts/AuthContext";
+import "./Auth.css";
+
+export default function SignupForm() {
+  const { setIsSignupMode } = useContext(AuthContext);
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const [msg, setMsg] = useState("");
+
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5000/api/auth/signup", form);
+      setMsg("Signup successful. Please login.");
+      setTimeout(() => setIsSignupMode(false), 2000);
+    } catch {
+      setMsg("Signup failed.");
+    }
+  };
+
+  return (
+    <div className="auth-container">
+      <h2>Signup</h2>
+      <form onSubmit={handleSubmit}>
+        <input name="name" placeholder="Name" onChange={handleChange} />
+        <input name="email" placeholder="Email" onChange={handleChange} />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+        />
+        <button type="submit">Signup</button>
+      </form>
+      {msg && <p>{msg}</p>}
+      <p>
+        Already have an account?{" "}
+        <span onClick={() => setIsSignupMode(false)}>Login</span>
+      </p>
+    </div>
+  );
+}
+
+
